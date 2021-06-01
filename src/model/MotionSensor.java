@@ -15,6 +15,22 @@ public class MotionSensor extends Device {
         this.mySensitivity = (int)(Math.round(Math.random() * 100.0)); // mySensitivity will be between 0-100
     }
 
+    /**
+     * returns device sensitivity
+     * @return device sensitivity
+     */
+    public int getSensitivity() {
+        return this.mySensitivity;
+    }
+
+    /**
+     * sets device sensitivity
+     * @param theSensitivity device sensitivity
+     */
+    public void setSensitivity(int theSensitivity) {
+        this.mySensitivity = theSensitivity;
+    }
+
     @Override
     public String toString() {
         return "MotionSensor{" +
