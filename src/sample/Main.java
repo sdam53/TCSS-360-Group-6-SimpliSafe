@@ -1,9 +1,10 @@
 package sample;
 
-import View.DeviceScene;
-import View.EmulatorScene;
-import View.HistoryScene;
-import View.MainScene;
+import model.*;
+import view.DeviceScene;
+import view.EmulatorScene;
+import view.HistoryScene;
+import view.MainScene;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
