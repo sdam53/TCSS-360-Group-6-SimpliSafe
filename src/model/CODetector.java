@@ -1,13 +1,13 @@
 package model;
 
-public class CO2Detector extends Device {
+public class CODetector extends Device {
 
     /**
      * Constructs the Device object
      *
      * @param theName name of device
      */
-    public CO2Detector(String theName) {
+    public CODetector(String theName) {
         super(theName);
     }
 }
