@@ -35,7 +35,7 @@ public abstract class Device {
      * returns device status
      * @return returns device status
      */
-    public DEVICE_STATUS getMyStatus() {
+    public DEVICE_STATUS getStatus() {
         return myStatus;
     }
 
@@ -43,7 +43,7 @@ public abstract class Device {
      * returns device name
      * @return returns device name
      */
-    public String getMyName() {
+    public String getName() {
         return myName;
     }
 
@@ -51,7 +51,7 @@ public abstract class Device {
      * returns device battery level
      * @return returns device battery level
      */
-    public int getMyBattery() {
+    public int getBattery() {
         return myBattery;
     }
 
@@ -59,7 +59,7 @@ public abstract class Device {
      * returns device hash/ID
      * @return returns device hash/ID
      */
-    public int getMyHash() {
+    public int getHash() {
         return myHash;
     }
 
@@ -67,7 +67,7 @@ public abstract class Device {
      * sets device status
      * @param theStatus device status
      */
-    public void setMyStatus(DEVICE_STATUS theStatus) {
+    public void setStatus(DEVICE_STATUS theStatus) {
         this.myStatus = theStatus;
     }
 
@@ -75,7 +75,7 @@ public abstract class Device {
      * sets device name
      * @param theName device name
      */
-    public void setMyName(String theName) {
+    public void setName(String theName) {
         this.myName = theName;
     }
 
@@ -83,7 +83,7 @@ public abstract class Device {
      * sets device battery level
      * @param theBattery device battery level
      */
-    public void setMyBattery(int theBattery) {
+    public void setBattery(int theBattery) {
         this.myBattery = theBattery;
     }
 
@@ -91,7 +91,7 @@ public abstract class Device {
      * sets device hash/ID
      * @param theHash device hash/ID
      */
-    public void setMyHash(int theHash) {
+    public void setHash(int theHash) {
         this.myHash = theHash;
     }
 
