@@ -20,7 +20,7 @@ public abstract class Device {
     protected int myBattery;
 
     /** string for device hash/ID */
-    protected int myHash;
+    protected int myID;
 
     /**
      * Constructs the Device object
@@ -31,7 +31,7 @@ public abstract class Device {
         this.myName = theName;
         this.myType = Component.getType(alias);
         this.myBattery = (int)(Math.round(Math.random() * 100.0)); // myBattery will be between 0-100
-        this.myHash = hashCode();
+        this.myID = hashCode();
     }
 
     /**
@@ -62,8 +62,8 @@ public abstract class Device {
      * returns device hash/ID
      * @return returns device hash/ID
      */
-    public int getHash() {
-        return myHash;
+    public int getID() {
+        return myID;
     }
 
     /**
@@ -95,7 +95,7 @@ public abstract class Device {
      * @param theHash device hash/ID
      */
     public void setHash(int theHash) {
-        this.myHash = theHash;
+        this.myID = theHash;
     }
 
     @Override
@@ -104,7 +104,7 @@ public abstract class Device {
                 "myStatus=" + myStatus +
                 ", myName='" + myName + '\'' +
                 ", myBattery=" + myBattery +
-                ", myHash=" + myHash +
+                ", myHash=" + myID +
                 '}';
     }
 }
