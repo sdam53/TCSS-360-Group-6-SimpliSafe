@@ -4,6 +4,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 public class DeviceScene {
@@ -11,11 +12,11 @@ public class DeviceScene {
         return this.pane;
     }
 
-    Pane pane;
-
+    BorderPane pane = new BorderPane();
+    TreeTableView<Device> deviceList = new TreeTableView<>();
     public DeviceScene() {
 
-        TreeTableView<Device> deviceList = new TreeTableView<>();
+
 
         TreeTableColumn<Device, String> column1 = new TreeTableColumn<>("Device");
         column1.setCellValueFactory(new TreeItemPropertyValueFactory<>("device"));
@@ -42,8 +43,7 @@ public class DeviceScene {
 
         deviceList.setRoot(devices);
 
-        this.pane = new Pane(deviceList);
-        this.pane.setMinWidth(400);
+        this.pane.setCenter(deviceList);
 
     }
 

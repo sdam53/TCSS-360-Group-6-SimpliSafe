@@ -3,6 +3,7 @@ package view;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -12,7 +13,7 @@ public class MainScene {
         return this.pane;
     }
 
-    Pane pane;
+    BorderPane pane = new BorderPane();
 
     public MainScene() {
 
@@ -22,10 +23,10 @@ public class MainScene {
         ToggleButton button3 = ViewUtil.getRoundButton("OTHER");
         HBox buttons = new HBox(button1, button2, button3);
 
-        buttons.setPadding(new Insets(100));
+        //buttons.setPadding(new Insets(100));
         buttons.setSpacing(10);
-        buttons.setAlignment(Pos.TOP_CENTER);
-        this.pane = new Pane(buttons);
+        buttons.setAlignment(Pos.CENTER);
+        this.pane.setCenter(buttons);
 
     }
 }

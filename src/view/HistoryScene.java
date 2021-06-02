@@ -1,6 +1,9 @@
 package view;
 
+import controller.Controller;
+import javafx.scene.control.Control;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -9,18 +12,18 @@ public class HistoryScene {
         return this.pane;
     }
 
-    Pane pane;
-
+    BorderPane pane;
+    ListView historyList;
     public HistoryScene() {
-        ListView historyList = new ListView();
+        historyList = new ListView(Controller.getNotificatons());
+        this.pane = new BorderPane();
+        //historyList.getItems().addAll(controller.Controller.getNotificatons());
+        pane.setCenter(historyList);
 
-        historyList.getItems().add("History item 1");
-        historyList.getItems().add("History item 2");
-        historyList.getItems().add("History item 3");
-        historyList.getItems().add("      ...     ");
-        historyList.getItems().add("History item X");
+    }
 
-        this.pane = new Pane(new HBox(historyList));
+    public void update() {
 
+        historyList.refresh();
     }
 }
