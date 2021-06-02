@@ -20,8 +20,8 @@ public class DeviceScene {
     }
 
     BorderPane pane = new BorderPane();
-    ArrayList<TreeItem> treeTabs = new ArrayList<>();
-    TreeTableView<Device> deviceList = new TreeTableView<>();
+    static ArrayList<TreeItem> treeTabs = new ArrayList<>();
+    static TreeTableView<Device> deviceList = new TreeTableView<>();
     public DeviceScene() {
 
 
@@ -35,13 +35,13 @@ public class DeviceScene {
         column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myID"));
 
         TreeTableColumn<Device, String> column3 = new TreeTableColumn<>("Status");
-        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myStatus"));
+        column3.setCellValueFactory(new TreeItemPropertyValueFactory<>("myStatus"));
 
-        TreeTableColumn<Device, Component> column4 = new TreeTableColumn<>("Type");
-        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myType"));
+        TreeTableColumn<Device, String> column4 = new TreeTableColumn<>("Type");
+        column4.setCellValueFactory(new TreeItemPropertyValueFactory<>("myType"));
 
-        TreeTableColumn<Device, Integer> column5 = new TreeTableColumn<>("Battery");
-        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myBattery"));
+        TreeTableColumn<Device, String> column5 = new TreeTableColumn<>("Battery");
+        column5.setCellValueFactory(new TreeItemPropertyValueFactory<>("myBattery"));
 
         deviceList.getColumns().addAll(column1, column2, column3, column4, column5);
 
@@ -82,8 +82,26 @@ public class DeviceScene {
 
     }
 
-    public void addDevice(Device d) {
+    public static void addDevice(Device d) {
         treeTabs.get(d.getMyType().ordinal()).getChildren().add(new TreeItem<>(d));
+    }
+
+    public static void addDevice(String name, String alias) {
+        switch (alias) {
+            case "sensor" -> {
+                treeTabs.get(Component.getType(alias).ordinal()).getChildren().add(new TreeItem<>(new Sensor(name, alias)));
+                break;
+            }
+            case "alarm" -> {
+                treeTabs.get(Component.getType(alias).ordinal()).getChildren().add(new TreeItem<>(new Alarm(name, alias)));
+                break;
+            }
+            default -> {
+                break;
+            }
+
+        }
+
     }
 
 }

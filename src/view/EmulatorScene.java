@@ -3,13 +3,11 @@ package view;
 import controller.Controller;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import model.Component;
 import model.Notificaton;
 
 import java.awt.event.ActionEvent;
@@ -54,10 +52,27 @@ public class EmulatorScene {
         notificationBox.setSpacing(30);
         notificationBox.setAlignment(Pos.CENTER);
 
+        HBox DeviceBox = new HBox();
+        ChoiceBox DeviceChoice = new ChoiceBox();
+        for (Component c: Component.values()) {
+            DeviceChoice.getItems().add(c.toString());
+        }
+        TextField DeviceField = new TextField();
+        Button DeviceButton = new Button("Press to create Device");
+
+        DeviceButton.setOnAction(e -> {
+            DeviceScene.addDevice(DeviceField.getText(), (String) DeviceChoice.getValue());
+            DeviceField.setText("");
+        });
+        DeviceBox.getChildren().addAll(DeviceButton, DeviceChoice, DeviceField);
+        notificationBox.setSpacing(30);
+        notificationBox.setAlignment(Pos.CENTER);
+
         Separator separatorA = new Separator(Orientation.HORIZONTAL);
         Separator separatorB = new Separator(Orientation.HORIZONTAL);
+        Separator separatorC = new Separator(Orientation.HORIZONTAL);
 
-        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox);
+        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox, separatorC, DeviceBox);
         output.setSpacing(30);
 
         this.pane = output;
