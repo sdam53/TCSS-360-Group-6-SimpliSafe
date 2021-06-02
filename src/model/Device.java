@@ -14,6 +14,8 @@ public abstract class Device {
     /** string for device name */
     protected String myName;
 
+    protected Component myType;
+
     /** double for device battery */
     protected int myBattery;
 
@@ -24,9 +26,10 @@ public abstract class Device {
      * Constructs the Device object
      * @param theName name of device
      */
-    public Device(String theName) {
+    public Device(String theName, String alias) {
         this.myStatus = DEVICE_STATUS.ACTIVATED;
         this.myName = theName;
+        this.myType = Component.getType(alias);
         this.myBattery = (int)(Math.round(Math.random() * 100.0)); // myBattery will be between 0-100
         this.myHash = hashCode();
     }
