@@ -35,6 +35,10 @@ public class Controller {
 
     }
 
+    /**
+     * returns smokeDetectors ArrayList
+     * @return smokeDetectors ArrayList
+     */
     public ArrayList<SmokeDetector> getSmokeDetectors() {
         return smokeDetectors;
     }
@@ -61,5 +65,37 @@ public class Controller {
 
     public ArrayList<WaterSensor> getWaterSensors() {
         return waterSensors;
+    }
+
+    /**
+     * add new Smoke Detector object
+     * @param name name of smoke detector
+     */
+    public void addSmokeDetector(String name) {
+        this.smokeDetectors.add(new SmokeDetector(name));
+    }
+
+    public void addCODetector(String name) {
+        this.coDetectors.add(new CODetector(name));
+    }
+
+    public void addGlassBreakSensor(String name) {
+        this.glassBreakSensors.add(new GlassBreakSensor(name));
+    }
+
+    public void addEntrySensor(String name) {
+        this.entrySensors.add(new EntrySensor(name));
+    }
+
+    public void addMotionSensor(String name) {
+        this.motionSensors.add(new MotionSensor(name));
+    }
+
+    public void addTemperatureSensor(String name) {
+        this.temperatureSensors.add(new TemperatureSensor(name));
+    }
+
+    public void addWaterSensor(String name) {
+        this.waterSensors.add(new WaterSensor(name));
     }
 }
