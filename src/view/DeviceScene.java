@@ -1,11 +1,18 @@
 package view;
 
+import com.sun.source.tree.Tree;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import model.Alarm;
+import model.Component;
+import model.Device;
+import model.Sensor;
+
+import java.util.ArrayList;
 
 public class DeviceScene {
     public Pane getPane() {
@@ -13,33 +20,61 @@ public class DeviceScene {
     }
 
     BorderPane pane = new BorderPane();
+    ArrayList<TreeItem> treeTabs = new ArrayList<>();
     TreeTableView<Device> deviceList = new TreeTableView<>();
     public DeviceScene() {
 
 
 
-        TreeTableColumn<Device, String> column1 = new TreeTableColumn<>("Device");
-        column1.setCellValueFactory(new TreeItemPropertyValueFactory<>("device"));
+
+
+        TreeTableColumn<Device, String> column1 = new TreeTableColumn<>("Name");
+        column1.setCellValueFactory(new TreeItemPropertyValueFactory<>("myName"));
 
         TreeTableColumn<Device, String> column2 = new TreeTableColumn<>("ID");
-        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("status"));
+        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myID"));
 
-        deviceList.getColumns().addAll(column1, column2);
+        TreeTableColumn<Device, String> column3 = new TreeTableColumn<>("Status");
+        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myStatus"));
 
-        TreeItem sensor1 = new TreeItem(new Device("Entry Sensor", "1"));
-        TreeItem sensor2 = new TreeItem(new Device("Entry Sensor", "2"));
-        TreeItem sensor3 = new TreeItem(new Device("Entry Sensor", "3"));
-        TreeItem sensors = new TreeItem(new Device("Sensor", "..."));
-        sensors.getChildren().addAll(sensor1, sensor2, sensor3);
+        TreeTableColumn<Device, Component> column4 = new TreeTableColumn<>("Type");
+        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myType"));
 
-        TreeItem alarm1 = new TreeItem(new Device("Entry Alarm", "4"));
-        TreeItem alarm2 = new TreeItem(new Device("Entry Alarm", "5"));
-        TreeItem alarm3 = new TreeItem(new Device("Smoke ALarm", "6"));
-        TreeItem alarms = new TreeItem(new Device("Alarms", "..."));
-        alarms.getChildren().addAll(alarm1, alarm2, alarm3);
+        TreeTableColumn<Device, Integer> column5 = new TreeTableColumn<>("Battery");
+        column2.setCellValueFactory(new TreeItemPropertyValueFactory<>("myBattery"));
 
-        TreeItem devices = new TreeItem(new Device("Devices", "..."));
-        devices.getChildren().addAll(sensors, alarms);
+        deviceList.getColumns().addAll(column1, column2, column3, column4, column5);
+
+        TreeItem devices = new TreeItem(new Alarm("Devices", "..."));
+
+
+        for (Component c : Component.values()) {
+
+            switch (c.getKind()) {
+                case "sensor" -> {
+                    treeTabs.add(new TreeItem(new Sensor(c.toString() + "'s", c.toString())));
+                    break;
+                }
+                case "alarm" -> {
+                    treeTabs.add(new TreeItem(new Alarm(c.toString() + "'s", c.toString())));
+                    break;
+                }
+                default -> {
+                    break;
+                }
+
+            }
+
+        }
+
+        for (TreeItem t: treeTabs) {
+            devices.getChildren().add(t);
+        }
+
+        addDevice(new Sensor("Entry Sensor Main Door", "ENTRYSENSOR"));
+
+
+
 
         deviceList.setRoot(devices);
 
@@ -47,34 +82,10 @@ public class DeviceScene {
 
     }
 
-    public class Device {
-        public String getDevice() {
-            return device;
-        }
-
-        public void setDevice(String device) {
-            this.device = device;
-        }
-
-        private String device = null;
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        private String status = null;
-
-        public Device() { }
-
-        public Device(String device, String status) {
-            this.device = device;
-            this.status = status;
-        }
+    public void addDevice(Device d) {
+        treeTabs.get(d.getMyType().ordinal()).getChildren().add(new TreeItem<>(d));
     }
+
 }
 
 

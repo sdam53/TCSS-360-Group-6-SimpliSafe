@@ -19,7 +19,6 @@ import java.util.TimerTask;
 
 public class Main extends Application {
 
-    public final Timer clockTimer = new Timer();
     public static MainScene mainScene = new MainScene();
     public static DeviceScene deviceScene = new DeviceScene();
     public static HistoryScene historyScene = new HistoryScene();

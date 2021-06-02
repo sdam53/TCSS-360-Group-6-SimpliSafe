@@ -38,7 +38,7 @@ public abstract class Device {
      * returns device status
      * @return returns device status
      */
-    public DEVICE_STATUS getStatus() {
+    public DEVICE_STATUS getMyStatus() {
         return myStatus;
     }
 
@@ -46,7 +46,7 @@ public abstract class Device {
      * returns device name
      * @return returns device name
      */
-    public String getName() {
+    public String getMyName() {
         return myName;
     }
 
@@ -54,7 +54,7 @@ public abstract class Device {
      * returns device battery level
      * @return returns device battery level
      */
-    public int getBattery() {
+    public int getMyBattery() {
         return myBattery;
     }
 
@@ -62,8 +62,12 @@ public abstract class Device {
      * returns device hash/ID
      * @return returns device hash/ID
      */
-    public int getID() {
+    public int getMyID() {
         return myID;
+    }
+
+    public Component getMyType() {
+        return myType;
     }
 
     /**
@@ -96,6 +100,10 @@ public abstract class Device {
      */
     public void setHash(int theHash) {
         this.myID = theHash;
+    }
+
+    public void setMyType(Component myType) {
+        this.myType = myType;
     }
 
     @Override

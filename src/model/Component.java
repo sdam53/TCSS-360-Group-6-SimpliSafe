@@ -1,25 +1,32 @@
 package model;
 
 public enum Component {
-    COSENSOR("COSENSOR"),
-    WATERSENSOR("WATERSENSOR"),
-    TEMPERATURESENSOR("TEMPERATURESENSOR"),
-    MOTIONSENSOR("MOTIONSENSOR"),
-    GLASSBREAKSENSOR("GLASSBREAKSENSOR"),
-    ENTRYSENSOR("ENTRYSENSOR"),
-    SMOKEALARM("SMOKEALARM"),
-    ENTRYALARM("ENTRYALARM"),
-    NONCOMPONENT("N/A");
+    COSENSOR("COSENSOR", "sensor"),
+    WATERSENSOR("WATERSENSOR", "sensor"),
+    TEMPERATURESENSOR("TEMPERATURESENSOR", "sensor"),
+    MOTIONSENSOR("MOTIONSENSOR", "sensor"),
+    GLASSBREAKSENSOR("GLASSBREAKSENSOR", "sensor"),
+    ENTRYSENSOR("ENTRYSENSOR", "sensor"),
+    SMOKEALARM("SMOKEALARM", "alarm"),
+    ENTRYALARM("ENTRYALARM", "alarm"),
+    NONCOMPONENT("N/A", "N/A");
 
     private String alias;
+    private String kind;
 
-    private Component(String alias) {
+    private Component(String alias, String kind) {
+
         this.alias = alias;
+        this.kind = kind;
     }
 
     @Override
     public String toString() {
         return alias;
+    }
+
+    public String getKind() {
+        return kind;
     }
 
     public static Component getType(String alias) {
