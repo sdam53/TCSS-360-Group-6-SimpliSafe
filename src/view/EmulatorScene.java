@@ -9,9 +9,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.Component;
 import model.Notificaton;
+import model.Sensor;
 
 import java.awt.event.ActionEvent;
 import java.security.SecurityPermission;
+
+import static view.DeviceScene.addDevice;
 
 public class EmulatorScene {
     public Pane getPane() {
@@ -46,7 +49,7 @@ public class EmulatorScene {
         notificationBox.getChildren().addAll(notificationButton, notificationField);
 
         notificationButton.setOnAction(e -> {
-            Controller.getNotificatons().add(new Notificaton(notificationField.getText(), "26:00", "TEST_NOTIFICATION"));
+            Controller.getNotificatons().add(new Notificaton(notificationField.getText(), "TEST_NOTIFICATION"));
             notificationField.setText("");
         });
         notificationBox.setSpacing(30);
@@ -65,8 +68,8 @@ public class EmulatorScene {
             DeviceField.setText("");
         });
         DeviceBox.getChildren().addAll(DeviceButton, DeviceChoice, DeviceField);
-        notificationBox.setSpacing(30);
-        notificationBox.setAlignment(Pos.CENTER);
+        DeviceBox.setSpacing(30);
+        DeviceBox.setAlignment(Pos.CENTER);
 
         Separator separatorA = new Separator(Orientation.HORIZONTAL);
         Separator separatorB = new Separator(Orientation.HORIZONTAL);

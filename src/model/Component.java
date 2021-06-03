@@ -29,6 +29,15 @@ public enum Component {
         return kind;
     }
 
+    public static String deriveKind(String alias) {
+        for( Component c : Component.values() ) {
+            if (c.alias.equals(alias)) {
+                return c.getKind();
+            }
+        }
+        return Component.NONCOMPONENT.getKind();
+    }
+
     public static Component getType(String alias) {
         for( Component c : Component.values() ) {
             if (c.alias.equals(alias)) {

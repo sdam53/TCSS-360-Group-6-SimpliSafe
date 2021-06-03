@@ -17,7 +17,6 @@ public class HistoryScene {
     public HistoryScene() {
         historyList = new ListView(Controller.getNotificatons());
         this.pane = new BorderPane();
-        //historyList.getItems().addAll(controller.Controller.getNotificatons());
         pane.setCenter(historyList);
 
     }

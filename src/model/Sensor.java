@@ -10,4 +10,8 @@ public class Sensor extends Device{
     public Sensor(String theName, String alias) {
         super(theName, alias);
     }
+
+    public Sensor(String name) {
+        super(name);
+    }
 }

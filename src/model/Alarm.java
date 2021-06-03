@@ -10,4 +10,7 @@ public class Alarm extends Device{
     public Alarm(String theName, String alias) {
         super(theName, alias);
     }
+    public Alarm(String name) {
+        super(name);
+    }
 }

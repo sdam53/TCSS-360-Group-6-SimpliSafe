@@ -6,7 +6,7 @@ package model;
 public abstract class Device {
 
     /** enum for device status */
-    public enum DEVICE_STATUS {ACTIVATED, DEACTIVATED, ALARMED}
+    public enum DEVICE_STATUS {ACTIVATED, DEACTIVATED, ALARMED, NULL}
 
     /** device status */
     protected DEVICE_STATUS myStatus;
@@ -21,6 +21,14 @@ public abstract class Device {
 
     /** string for device hash/ID */
     protected int myID;
+
+    public Device(String name) {
+        this.myStatus = DEVICE_STATUS.NULL;
+        this.myName = name;
+        this.myType = Component.NONCOMPONENT;
+        this.myBattery = 0; // myBattery will be between 0-100
+        this.myID = 0;
+    }
 
     /**
      * Constructs the Device object

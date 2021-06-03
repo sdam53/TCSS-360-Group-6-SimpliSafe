@@ -28,9 +28,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("controller.fxml"));
 
-        //For testing the notifications
-        Controller.getNotificatons().add(new Notificaton("I am a note", " 10:10", "test"));
-
         primaryStage.setTitle("SimpliSafe Application [WIP]");
         primaryStage.setScene(new Scene(initTabPane(), 800, 600));
         primaryStage.show();
