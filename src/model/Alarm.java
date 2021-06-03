@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * Alarm Object that extends Device which is used to
+ * help with sorting and potentially with future logic
+ */
 public class Alarm extends Device{
     /**
      * Constructs the Device object

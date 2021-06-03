@@ -16,38 +16,51 @@ import java.security.SecurityPermission;
 
 import static view.DeviceScene.addDevice;
 
+/**
+ * This class is emulating what the hardware would do and has debug tools for
+ * testing functionality
+ */
 public class EmulatorScene {
+
+    /**
+     * pane getter
+     * @return
+     */
     public Pane getPane() {
         return this.pane;
     }
 
+    //Pane field
     Pane pane;
 
+    /**
+     * Constructor and init funciton
+     */
     public EmulatorScene() {
 
+        //Creating the Title which is in an HBox and consists of one label
+        //to get it to center you have to set the Labels max width to a
+        //arbitrarily large number which then causes it to behave when
+        //telling it to center
 
         HBox titleBox = new HBox();
         Label title = new Label("Emulator");
         title.setFont(new Font(24));
-
-        //Fuck this it took me way to freaking long
         title.setMaxWidth(Double.MAX_VALUE);
         title.setAlignment(Pos.CENTER);
         titleBox.getChildren().add(title);
 
-        HBox deviceBox = new HBox();
-        TextField deviceField = new TextField();
-        Button deviceButton = new Button("Press to send command");
-        deviceBox.getChildren().addAll(deviceButton, deviceField);
 
-        deviceBox.setSpacing(30);
-        deviceBox.setAlignment(Pos.CENTER);
+        //Creates the section for adding notifications to the HistoryScene
+        //consists of an HBox with a TextField and a button which will
+        //send a test notification
 
         HBox notificationBox = new HBox();
         TextField notificationField = new TextField();
         Button notificationButton = new Button("Press to send notification");
         notificationBox.getChildren().addAll(notificationButton, notificationField);
 
+        //adds a notification to the HistoryScene and then clears the text field
         notificationButton.setOnAction(e -> {
             Controller.getNotificatons().add(new Notificaton(notificationField.getText(), "TEST_NOTIFICATION"));
             notificationField.setText("");
@@ -55,29 +68,38 @@ public class EmulatorScene {
         notificationBox.setSpacing(30);
         notificationBox.setAlignment(Pos.CENTER);
 
-        HBox DeviceBox = new HBox();
-        ChoiceBox DeviceChoice = new ChoiceBox();
+        //This is the section for creating new Devices which is an HBox
+        //with a Button, TextField, Choice Box full of all the Component Enums
+        //reside for adding devices to the Device Scene
+
+        HBox deviceBox = new HBox();
+        TextField deviceField = new TextField();
+        Button deviceButton = new Button("Press to send command");
+        ChoiceBox deviceChoice = new ChoiceBox();
+        //adds all the Component Strings to the ChoiceBox
         for (Component c: Component.values()) {
-            DeviceChoice.getItems().add(c.toString());
+            deviceChoice.getItems().add(c.toString());
         }
-        TextField DeviceField = new TextField();
-        Button DeviceButton = new Button("Press to create Device");
+        deviceBox.getChildren().addAll(deviceButton, deviceChoice, deviceField);
+        deviceBox.setSpacing(30);
+        deviceBox.setAlignment(Pos.CENTER);
 
-        DeviceButton.setOnAction(e -> {
-            DeviceScene.addDevice(DeviceField.getText(), (String) DeviceChoice.getValue());
-            DeviceField.setText("");
+        //adds a device to the DeviceScene and clears the deviceField as a function
+        //to the deviceButton
+        deviceButton.setOnAction(e -> {
+            DeviceScene.addDevice(deviceField.getText(), (String) deviceChoice.getValue());
+            deviceField.setText("");
         });
-        DeviceBox.getChildren().addAll(DeviceButton, DeviceChoice, DeviceField);
-        DeviceBox.setSpacing(30);
-        DeviceBox.setAlignment(Pos.CENTER);
 
+
+        //Separators for aesthetics
         Separator separatorA = new Separator(Orientation.HORIZONTAL);
         Separator separatorB = new Separator(Orientation.HORIZONTAL);
         Separator separatorC = new Separator(Orientation.HORIZONTAL);
 
-        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox, separatorC, DeviceBox);
+        //Output VBox for display
+        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox, separatorC, deviceBox);
         output.setSpacing(30);
-
         this.pane = output;
 
     }

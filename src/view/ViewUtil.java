@@ -4,6 +4,13 @@ import javafx.scene.control.ToggleButton;
 
 public class ViewUtil {
 
+
+    /**
+     * Creates a ToggleButton with custom text and custom Styling
+     * this is just a code reuse method
+     * @param text
+     * @return
+     */
     static ToggleButton getRoundButton(String text) {
         ToggleButton button = new ToggleButton(text);
         button.setStyle(

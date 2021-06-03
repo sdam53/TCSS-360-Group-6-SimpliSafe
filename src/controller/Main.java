@@ -17,22 +17,33 @@ import javafx.stage.Stage;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Main class that handles the main function
+ */
 public class Main extends Application {
 
+    //all the scenes are static to allow easier changes
     public static MainScene mainScene = new MainScene();
     public static DeviceScene deviceScene = new DeviceScene();
     public static HistoryScene historyScene = new HistoryScene();
     public static EmulatorScene emulatorScene = new EmulatorScene();
 
+    /**
+     * sets the primary stage to the TabPane
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("controller.fxml"));
-
         primaryStage.setTitle("SimpliSafe Application [WIP]");
         primaryStage.setScene(new Scene(initTabPane(), 800, 600));
         primaryStage.show();
     }
 
+    /**
+     * init function for the main TabPane which is here to reduce clutter in main
+     * @return
+     */
     public TabPane initTabPane() {
         TabPane mainPane = new TabPane();
         Tab tab1 = new Tab("Main", mainScene.getPane());
