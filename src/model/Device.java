@@ -6,7 +6,23 @@ package model;
 public abstract class Device {
 
     /** enum for device status */
-    public enum DEVICE_STATUS {ACTIVATED, DEACTIVATED, ALARMED, NULL}
+    public enum DEVICE_STATUS {
+        ACTIVATED("ACTIVATED"),
+        DEACTIVATED("DEACTIVATED"),
+        ALARMED("ALARMED"),
+        NULL("...");
+
+        private String internal;
+
+        DEVICE_STATUS(String internal) {
+            this.internal = internal;
+        }
+
+        @Override
+        public String toString() {
+            return this.internal;
+        }
+    }
 
     /** device status */
     protected DEVICE_STATUS myStatus;
@@ -70,8 +86,9 @@ public abstract class Device {
      * returns device hash/ID
      * @return returns device hash/ID
      */
-    public int getMyID() {
-        return myID;
+    public String getMyID() {
+
+        return Integer.toString(myID);
     }
 
     public Component getMyType() {

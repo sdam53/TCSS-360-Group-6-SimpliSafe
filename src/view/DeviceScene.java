@@ -9,10 +9,7 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import model.Alarm;
-import model.Component;
-import model.Device;
-import model.Sensor;
+import model.*;
 
 import java.util.ArrayList;
 
@@ -85,7 +82,7 @@ public class DeviceScene {
         deviceList.getColumns().addAll(column1, column2, column3, column4, column5);
 
         //creating the root Node
-        TreeItem devices = new TreeItem(new Alarm("Devices"));
+        TreeItem devices = new TreeItem(new BlankDevice("Devices"));
 
 
         //initilizaing the treeTabs by creating a treeItem of a device
@@ -96,6 +93,8 @@ public class DeviceScene {
 
             //determines which constructor is needed and makes sure to use the one parameter
             //constructor to get null information
+            treeTabs.add(new TreeItem((new BlankDevice(c.toString()))));
+            /*
             switch (c.getKind()) {
                 case "sensor" -> {
                     treeTabs.add(new TreeItem(new Sensor(c.toString())));
@@ -110,7 +109,7 @@ public class DeviceScene {
                 }
 
             }
-
+            */
         }
 
         //adds all the TreeItems in treeTabs to the rootNode
