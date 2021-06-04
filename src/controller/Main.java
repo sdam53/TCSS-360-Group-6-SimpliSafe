@@ -36,7 +36,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("SimpliSafe Application [WIP]");
-        primaryStage.setScene(new Scene(initTabPane(), 800, 600));
+        Scene rootScene = new Scene(initTabPane(), 800, 600);
+        rootScene.getStylesheets().add("/view.css");
+        primaryStage.setScene(rootScene);
         primaryStage.show();
     }
 

@@ -1,51 +1,51 @@
 package view;
 
+import javafx.collections.ListChangeListener;
+import javafx.event.EventHandler;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
+
 
 public class ViewUtil {
 
 
-    /**
-     * Creates a ToggleButton with custom text and custom Styling
-     * this is just a code reuse method
-     * @param text
-     * @return
-     */
-    static ToggleButton getRoundButton(String text) {
-        ToggleButton button = new ToggleButton(text);
-        button.setStyle(
-                "-fx-background-color: lightblue;" +
-                "-fx-background-radius: 5em; " +
-                        "-fx-min-width: 100px; " +
-                        "-fx-min-height: 100px; " +
-                        "-fx-max-width: 100px; " +
-                        "-fx-max-height: 100px;"
-        );
+    private static ViewUtil me;
 
+    private ViewUtil() {
+    }
 
-        button.setOnAction(actionEvent -> {
-            if(button.isSelected()){
-                button.setStyle(
-                        "-fx-background-color: cornflowerblue;" +
-                                "-fx-background-radius: 5em; " +
-                                "-fx-min-width: 100px; " +
-                                "-fx-min-height: 100px; " +
-                                "-fx-max-width: 100px; " +
-                                "-fx-max-height: 100px;"
-                );
-            }
-            else {
-                button.setStyle(
-                        "-fx-background-color: lightblue;" +
-                                "-fx-background-radius: 5em; " +
-                                "-fx-min-width: 100px; " +
-                                "-fx-min-height: 100px; " +
-                                "-fx-max-width: 100px; " +
-                                "-fx-max-height: 100px;"
-                );
+    public static ViewUtil get() {
+        if (me == null) {
+            me = new ViewUtil();
+        }
+        return me;
+    }
+
+    public EventHandler<MouseEvent> consumeMouseEventfilter = (javafx.scene.input.MouseEvent mouseEvent) -> {
+        if (((Toggle) mouseEvent.getSource()).isSelected()) {
+            mouseEvent.consume();
+        }
+    };
+
+    public void addAlwaysOneSelectedSupport(final ToggleGroup toggleGroup) {
+        toggleGroup.getToggles().addListener((ListChangeListener.Change<? extends Toggle> c) -> {
+            while (c.next()) {
+                for (final Toggle addedToggle : c.getAddedSubList()) {
+                    addConsumeMouseEventfilter(addedToggle);
+                }
             }
         });
-        return button;
+        toggleGroup.getToggles().forEach(t -> {
+            addConsumeMouseEventfilter(t);
+        });
+    }
+
+    private void addConsumeMouseEventfilter(Toggle toggle) {
+        ((ToggleButton) toggle).addEventFilter(MouseEvent.MOUSE_PRESSED, consumeMouseEventfilter);
+        ((ToggleButton) toggle).addEventFilter(MouseEvent.MOUSE_RELEASED, consumeMouseEventfilter);
+        ((ToggleButton) toggle).addEventFilter(MouseEvent.MOUSE_CLICKED, consumeMouseEventfilter);
     }
 
 }

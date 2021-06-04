@@ -1,0 +1,47 @@
+.toggle-button{
+    -fx-background-color: -fx-outer-border, lightblue;
+    -fx-background-insets: 1,2;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-font-size: 0.8em;
+    -fx-background-radius: 100;
+    -fx-padding: 3px 5px 3px 5px;
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
+    -fx-max-width: 100px;
+    -fx-max-height: 100px;
+}
+
+.toggle-button:selected{
+    -fx-background-color: cornflowerblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.6) , 6, 0.0 , 1, 1 );
+}
+
+.toggle-button:pressed{
+    -fx-background-color: rgb(101,101,101);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.toggle-button > .color-picker-label{
+    -fx-padding: 0px 0.667px 0px 5px;
+    -fx-font-size: 0.4em;
+}
+
+.toggle-button > .label,
+.toggle-button > .list-cell,
+.toggle-button > .list-cell:selected{
+    -fx-padding: 0px 0px 0px 5px;
+    -fx-cell-size: 12;
+    -fx-font-weight: normal;
+}
+
+.toggle-button > .glyph-icon:hover{
+}
+
+.toggle-button > .color-picker-label > .picker-color{
+    -fx-scale-x: 0.7;
+    -fx-scale-y: 0.7;
+}
