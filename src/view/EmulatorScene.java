@@ -98,7 +98,7 @@ public class EmulatorScene {
         Separator separatorC = new Separator(Orientation.HORIZONTAL);
 
         //Output VBox for display
-        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox, separatorC, deviceBox);
+        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox);
         output.setSpacing(30);
         this.pane = output;
 

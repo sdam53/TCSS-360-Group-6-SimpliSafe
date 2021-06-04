@@ -62,8 +62,8 @@ public abstract class Device {
      * returns device battery level
      * @return returns device battery level
      */
-    public int getMyBattery() {
-        return myBattery;
+    public String getMyBattery() {
+        return myBattery + "%";
     }
 
     /**
