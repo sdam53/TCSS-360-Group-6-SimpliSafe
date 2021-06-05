@@ -56,6 +56,9 @@ public abstract class Device {
         this.myType = Component.getType(alias);
         this.myBattery = (int)(Math.round(Math.random() * 100.0)); // myBattery will be between 0-100
         this.myID = hashCode();
+        while (myBattery == 0) { //Preventing devices from getting 0%
+            this.myBattery = (int)(Math.round(Math.random() * 100.0));
+        }
     }
 
     /**
