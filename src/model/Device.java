@@ -110,17 +110,14 @@ public abstract class Device {
         this.myID = theHash;
     }
 
-    public void setMyType(Component myType) {
-        this.myType = myType;
-    }
-
     @Override
     public String toString() {
         return "Device{" +
                 "myStatus=" + myStatus +
                 ", myName='" + myName + '\'' +
+                ", myType=" + myType +
                 ", myBattery=" + myBattery +
-                ", myHash=" + myID +
+                ", myID=" + myID +
                 '}';
     }
 }
