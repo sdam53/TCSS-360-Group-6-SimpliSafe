@@ -33,4 +33,19 @@ public abstract class Controller {
     public static ObservableList<Notificaton> getNotificatons() {
         return notificatons;
     }
+
+    /**
+     * adds an device to either the sensors or alarms arraylist
+     * @param name name of the device
+     * @param alias the alias of the device
+     */
+    public static void addDevice(String name, String alias) {
+        switch (alias) {
+            case "COSENSOR", "WATERSENSOR", "TEMPERATURESENSOR", "MOTIONSENSOR", "GLASSBREAKSENSOR", "ENTRYSENSOR":
+                sensors.add(new Sensor(name, alias));
+                break;
+            default:
+                alarms.add(new Alarm(name, alias));
+        }
+    }
 }
