@@ -66,6 +66,7 @@ public class MainScene implements EventHandler<ActionEvent> {
         } else if (actionEvent.getSource() == offButton) {
             offState();
         }
+        DeviceScene.update();
         //System.out.println(Controller.getSensors().size());
         //System.out.println(Controller.getAlarms().size());
         //for (Sensor sensor: Controller.getSensors()) {

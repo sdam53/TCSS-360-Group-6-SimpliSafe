@@ -1,6 +1,7 @@
 package view;
 
 import com.sun.source.tree.Tree;
+import controller.Controller;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -33,6 +34,8 @@ public class DeviceScene {
     //of each elemnent in the List is not needed and is used in parallel
     //with the Component Ordinal array
     static ArrayList<TreeItem> treeTabs = new ArrayList<>();
+
+    static ArrayList<TreeItem> treeTabsBasis = new ArrayList<>();
 
     //The basis of the TreeTableView
     static TreeTableView<Device> deviceList = new TreeTableView<>();
@@ -70,60 +73,44 @@ public class DeviceScene {
         column3.setCellValueFactory(new TreeItemPropertyValueFactory<>("myStatus"));
         column3.setPrefWidth(100);
 
-        TreeTableColumn<Device, String> column4 = new TreeTableColumn<>("Type");
-        column4.setCellValueFactory(new TreeItemPropertyValueFactory<>("myType"));
-        column4.setPrefWidth(150);
-
-        TreeTableColumn<Device, String> column5 = new TreeTableColumn<>("Battery");
-        column5.setCellValueFactory(new TreeItemPropertyValueFactory<>("myBattery"));
-        column5.setPrefWidth(45);
+        TreeTableColumn<Device, String> column4 = new TreeTableColumn<>("Battery");
+        column4.setCellValueFactory(new TreeItemPropertyValueFactory<>("myBattery"));
+        column4.setPrefWidth(100);
 
         //adds the columns to the TreeTableView
-        deviceList.getColumns().addAll(column1, column2, column3, column4, column5);
+        deviceList.getColumns().addAll(column1, column2, column3, column4);
 
-        //creating the root Node
-        TreeItem devices = new TreeItem(new BlankDevice("Devices"));
-
-
-        //initilizaing the treeTabs by creating a treeItem of a device
-        //for each Component enum in parallel with the ordinal array
-        // (I think that's what it's called whatever the array
-        // the enums are stored in)
-        for (Component c : Component.values()) {
-
-            //determines which constructor is needed and makes sure to use the one parameter
-            //constructor to get null information
-            treeTabs.add(new TreeItem((new BlankDevice(c.toString()))));
-            /*
-            switch (c.getKind()) {
-                case "sensor" -> {
-                    treeTabs.add(new TreeItem(new Sensor(c.toString())));
-                    break;
-                }
-                case "alarm" -> {
-                    treeTabs.add(new TreeItem(new Alarm(c.toString())));
-                    break;
-                }
-                default -> {
-                    break;
-                }
-
-            }
-            */
-        }
-
-        //adds all the TreeItems in treeTabs to the rootNode
-        for (TreeItem t: treeTabs) {
-            devices.getChildren().add(t);
-        }
-
-
-        //sets the root node as the root for deviceList
-        deviceList.setRoot(devices);
+        update();
 
         //sets the deviceList as the center of the pane for display
         this.pane.setCenter(deviceList);
 
+    }
+
+    public static void update() {
+        TreeItem newDevices = new TreeItem(new BlankDevice("Devices"));
+        treeTabs = new ArrayList<>();
+
+        for (Component c : Component.values()) {
+
+            treeTabs.add(new TreeItem((new BlankDevice(c.toString()))));
+
+        }
+        for (TreeItem t: treeTabs) {
+            newDevices.getChildren().add(t);
+        }
+
+        for (Device d:
+                Controller.getSensors()) {
+            addDevice(d);
+        }
+
+        for (Device d:
+                Controller.getAlarms()) {
+            addDevice(d);
+        }
+
+        deviceList.setRoot(newDevices);
     }
 
     /**
