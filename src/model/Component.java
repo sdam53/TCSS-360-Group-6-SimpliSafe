@@ -15,7 +15,7 @@ public enum Component {
     ENTRYSENSOR("ENTRYSENSOR", "sensor"),
     SMOKEALARM("SMOKEALARM", "alarm"),
     ENTRYALARM("ENTRYALARM", "alarm"),
-    NONCOMPONENT("N/A", "N/A");
+    NONCOMPONENT("...", "N/A");
 
     private String alias;
     private String kind;
