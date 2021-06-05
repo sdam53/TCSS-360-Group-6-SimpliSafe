@@ -86,9 +86,15 @@ public class EmulatorScene {
 
         //adds a device to the DeviceScene and clears the deviceField as a function
         //to the deviceButton
+        //also adds the device to the Controller class' arraylist that contains the devices
         deviceButton.setOnAction(e -> {
             DeviceScene.addDevice(deviceField.getText(), (String) deviceChoice.getValue());
+
+            Controller.addDevice(deviceField.getText(), (String) deviceChoice.getValue());
             deviceField.setText("");
+
+
+
         });
 
 
