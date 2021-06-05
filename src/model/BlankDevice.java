@@ -33,4 +33,9 @@ public class BlankDevice extends Device{
     public Component getMyType() {
         return super.getMyType();
     }
+
+    @Override
+    public void trigger() {
+
+    }
 }

@@ -48,4 +48,23 @@ public abstract class Controller {
                 alarms.add(new Alarm(name, alias));
         }
     }
+
+    public static void triggerDevice(String name) {
+        for (Device d:
+             getAlarms()) {
+            if(d.getMyName().equalsIgnoreCase(name)) {
+                d.trigger();
+                return;
+            }
+        }
+        for (Device d:
+                getSensors()) {
+            if(d.getMyName().equalsIgnoreCase(name)) {
+                d.trigger();
+                return;
+            }
+        }
+        System.out.println("Found no matching devices");
+
+    }
 }

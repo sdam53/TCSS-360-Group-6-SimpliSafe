@@ -57,7 +57,7 @@ public class EmulatorScene {
 
         HBox notificationBox = new HBox();
         TextField notificationField = new TextField();
-        Button notificationButton = new Button("Press to send notification");
+        Button notificationButton = new Button("Press to create device");
         notificationBox.getChildren().addAll(notificationButton, notificationField);
 
         //adds a notification to the HistoryScene and then clears the text field
@@ -97,6 +97,19 @@ public class EmulatorScene {
 
         });
 
+        HBox triggerBox = new HBox();
+        TextField triggerField = new TextField();
+        Button triggerButton = new Button("Press to trigger device");
+        triggerBox.getChildren().addAll(triggerButton, triggerField);
+
+        //adds a notification to the HistoryScene and then clears the text field
+        triggerButton.setOnAction(e -> {
+            Controller.triggerDevice(triggerField.getText());
+            triggerField.setText("");
+        });
+        triggerBox.setSpacing(30);
+        triggerBox.setAlignment(Pos.CENTER);
+
 
         //Separators for aesthetics
         Separator separatorA = new Separator(Orientation.HORIZONTAL);
@@ -104,7 +117,7 @@ public class EmulatorScene {
         Separator separatorC = new Separator(Orientation.HORIZONTAL);
 
         //Output VBox for display
-        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox);
+        VBox output = new VBox(title, separatorA, deviceBox, separatorB, notificationBox, separatorC, triggerBox);
         output.setSpacing(30);
         this.pane = output;
 

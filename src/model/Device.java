@@ -130,6 +130,8 @@ public abstract class Device {
         this.myID = theHash;
     }
 
+    public abstract void trigger();
+
     @Override
     public String toString() {
         return "Device{" +
