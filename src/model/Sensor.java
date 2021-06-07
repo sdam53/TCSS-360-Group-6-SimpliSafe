@@ -11,7 +11,7 @@ public class Sensor extends Device{
      * Constructs the Device object
      *
      * @param theName name of device
-     * @param alias
+     * @param alias the type of device
      */
     public Sensor(String theName, String alias) {
         super(theName, alias);
@@ -19,7 +19,7 @@ public class Sensor extends Device{
 
     /**
      * Triggers the Sensor and simulates the relevant behavior
-     * @param myName
+     * @param myName the name of the sensor
      */
     @Override
     public void trigger(String myName) {
@@ -27,6 +27,10 @@ public class Sensor extends Device{
         this.setStatus(DEVICE_STATUS.ALARMED);
     }
 
+    /**
+     * constructs the Sensor object
+     * @param name the name of the Sensor object
+     */
     public Sensor(String name) {
         super(name);
     }
