@@ -33,7 +33,10 @@ public class MainScene implements EventHandler<ActionEvent> {
     private Label alarmState;
 
 
-
+    /**
+     * returns pane
+     * @return pane
+     */
     public Pane getPane() {
         return this.pane;
     }
