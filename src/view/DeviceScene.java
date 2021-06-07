@@ -1,15 +1,12 @@
 package view;
 
-import com.sun.source.tree.Tree;
 import controller.Controller;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import model.*;
 
 import java.util.ArrayList;
