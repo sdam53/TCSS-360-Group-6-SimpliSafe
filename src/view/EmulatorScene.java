@@ -57,7 +57,7 @@ public class EmulatorScene {
 
         HBox notificationBox = new HBox();
         TextField notificationField = new TextField();
-        Button notificationButton = new Button("Press to create device");
+        Button notificationButton = new Button("Press to create test notification");
         notificationBox.getChildren().addAll(notificationButton, notificationField);
 
         //adds a notification to the HistoryScene and then clears the text field
@@ -74,12 +74,13 @@ public class EmulatorScene {
 
         HBox deviceBox = new HBox();
         TextField deviceField = new TextField();
-        Button deviceButton = new Button("Press to send command");
+        Button deviceButton = new Button("Press to create device");
         ChoiceBox deviceChoice = new ChoiceBox();
         //adds all the Component Strings to the ChoiceBox
         for (Component c: Component.values()) {
             deviceChoice.getItems().add(c.toString());
         }
+        deviceChoice.setValue(Component.values()[0].toString());
         deviceBox.getChildren().addAll(deviceButton, deviceChoice, deviceField);
         deviceBox.setSpacing(30);
         deviceBox.setAlignment(Pos.CENTER);

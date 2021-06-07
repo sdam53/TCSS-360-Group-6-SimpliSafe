@@ -5,12 +5,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import model.Alarm;
 import model.Component;
 import model.Device;
@@ -27,7 +30,7 @@ public class MainScene implements EventHandler<ActionEvent> {
     private ToggleButton homeButton;
     private ToggleButton awayButton;
     private ToggleButton offButton;
-    private TextArea alarmState;
+    private Label alarmState;
 
 
 
@@ -52,7 +55,11 @@ public class MainScene implements EventHandler<ActionEvent> {
 
         // Text area to display the state of the arm
 
-        alarmState = new TextArea();
+
+        alarmState = new Label("No State");
+        alarmState.setFont(new Font(24));
+        alarmState.setMaxWidth(Double.MAX_VALUE);
+        alarmState.setAlignment(Pos.CENTER);
         this.pane.setTop(alarmState);
 
 
