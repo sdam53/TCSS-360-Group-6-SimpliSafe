@@ -24,7 +24,7 @@ public class EmulatorScene {
 
     /**
      * pane getter
-     * @return
+     * @return pane
      */
     public Pane getPane() {
         return this.pane;
@@ -89,17 +89,15 @@ public class EmulatorScene {
         //to the deviceButton
         //also adds the device to the Controller class' arraylist that contains the devices
         deviceButton.setOnAction(e -> {
-            if (deviceField.getText().trim().length() > 0) {
+            if (deviceField.getText().trim().length() > 0) { // checks if device name is blank
 
-                if (!Controller.isDuplicateName(deviceField.getText())) {
+                if (!Controller.isDuplicateName(deviceField.getText())) { // checks if there is a duplicate device name
                     DeviceScene.addDevice(deviceField.getText().trim(), (String) deviceChoice.getValue());
 
                     Controller.addDevice(deviceField.getText().trim(), (String) deviceChoice.getValue());
                     deviceField.setText("");
                 }
             }
-
-
 
         });
 
