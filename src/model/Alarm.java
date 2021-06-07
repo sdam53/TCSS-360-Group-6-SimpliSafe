@@ -11,7 +11,7 @@ public class Alarm extends Device{
      * Constructs the Device object
      *
      * @param theName name of device
-     * @param alias
+     * @param alias device type
      */
     public Alarm(String theName, String alias) {
         super(theName, alias);
@@ -19,7 +19,7 @@ public class Alarm extends Device{
 
     /**
      * Method for triggering the alarm and simulating that behavior
-     * @param triggeringDevice
+     * @param triggeringDevice the device that will be triggered
      */
     @Override
     public void trigger(String triggeringDevice) {
@@ -27,6 +27,10 @@ public class Alarm extends Device{
         this.setStatus(DEVICE_STATUS.ALARMED);
     }
 
+    /**
+     * Constructs the Alarm object
+     * @param name the name of the alarm
+     */
     public Alarm(String name) {
         super(name);
     }
