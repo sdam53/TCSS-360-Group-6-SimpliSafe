@@ -6,15 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import model.Component;
 import model.Notificaton;
-import model.Sensor;
-
-import java.awt.event.ActionEvent;
-import java.security.SecurityPermission;
-
-import static view.DeviceScene.addDevice;
 
 /**
  * This class is emulating what the hardware would do and has debug tools for
