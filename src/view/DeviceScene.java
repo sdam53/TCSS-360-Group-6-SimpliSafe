@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class DeviceScene {
     /**
      * pane getter
-     * @return
+     * @return pane
      */
     public Pane getPane() {
         return this.pane;
@@ -45,10 +45,6 @@ public class DeviceScene {
      * the TreeTableView
      */
     public DeviceScene() {
-
-
-
-
 
         //The Five columns below correspond to the 5 columns in the the TreeTableView
         //They do three things the first is instantiate a TreeTableColumn<Device, String>
@@ -87,6 +83,9 @@ public class DeviceScene {
 
     }
 
+    /**
+     * updates the DeviceScene GUI when new devices are added or alarmed
+     */
     public static void update() {
         TreeItem newDevices = new TreeItem(new BlankDevice("Devices"));
         treeTabs = new ArrayList<>();
@@ -116,7 +115,7 @@ public class DeviceScene {
     /**
      * This takes an object of Type Device (or one of it's children) and depending on what
      * kind of Device it is it gets added to the appropriate node in TreeTabs
-     * @param d
+     * @param d the device
      */
     public static void addDevice(Device d) {
         treeTabs.get(d.getMyType().ordinal()).getChildren().add(new TreeItem<>(d));
@@ -125,8 +124,8 @@ public class DeviceScene {
     /**
      * This takes the two String inputs that are used in the Device Constructor and
      * serves as a shortcut for interacting with the GUI
-     * @param name
-     * @param alias
+     * @param name the name of the device
+     * @param alias the type of device
      */
     public static void addDevice(String name, String alias) {
         switch (Component.deriveKind(alias)) {
