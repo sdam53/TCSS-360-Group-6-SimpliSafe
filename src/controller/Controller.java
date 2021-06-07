@@ -42,7 +42,8 @@ public abstract class Controller {
      */
     public static void addDevice(String name, String alias) {
         switch (alias) {
-            case "COSENSOR", "WATERSENSOR", "TEMPERATURESENSOR", "MOTIONSENSOR", "GLASSBREAKSENSOR", "ENTRYSENSOR":
+            case "ENTRYSENSOR", "MOTIONSENSOR", "GLASSBREAKSENSOR", "SMOKEDETECTOR", "COSENSOR",
+                    "TEMPERATURESENSOR", "WATERSENSOR":
                 sensors.add(new Sensor(name, alias));
                 break;
             default:
