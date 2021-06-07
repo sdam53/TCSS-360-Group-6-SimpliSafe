@@ -60,7 +60,6 @@ public abstract class Controller {
             }
         }
         System.out.println("Found no matching devices");
-
     }
 
     public static void triggerAlarms(Device initiatingDevice) {
@@ -73,4 +72,19 @@ public abstract class Controller {
 
         DeviceScene.update();
     }
+
+    public static boolean isDuplicateName(String theName) {
+        for (Alarm alarm: alarms) {
+            if (theName.equals(alarm.getMyName())) {
+                return true;
+            }
+        }
+        for (Sensor sensor: sensors) {
+            if (theName.equals(sensor.getMyName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
