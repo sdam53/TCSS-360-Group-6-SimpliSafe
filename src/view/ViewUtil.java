@@ -7,7 +7,9 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 
-
+/**
+ * class used to make toggleButtons in MainScene class look and act similar to SimpliSafe's system
+ */
 public class ViewUtil {
 
 
