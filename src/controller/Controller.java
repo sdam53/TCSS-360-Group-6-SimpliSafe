@@ -13,15 +13,18 @@ import java.util.ArrayList;
  */
 public abstract class Controller {
 
+    /** ArrayList containing all alarms */
     private static ArrayList<Alarm> alarms = new ArrayList<>();
+
+    /** ArrayList containing all sensors */
     private static ArrayList<Sensor> sensors = new ArrayList<>();
 
-    //this is an ObservableList for compatability reasons
-    private static ObservableList<Notificaton> notificatons = FXCollections.observableArrayList();
+    //this is an ObservableList for compatibility reasons
+    private static ObservableList<Notificaton> notifications = FXCollections.observableArrayList();
 
     /**
      * Getter for the alarm arraylist
-     * @return
+     * @return alarm arraylist
      */
     public static ArrayList<Alarm> getAlarms() {
         return alarms;
@@ -29,7 +32,7 @@ public abstract class Controller {
 
     /**
      * getter for the sensor arraylist
-     * @return
+     * @return sensor arraylist
      */
     public static ArrayList<Sensor> getSensors() {
         return sensors;
@@ -37,10 +40,10 @@ public abstract class Controller {
 
     /**
      * Notification getter
-     * @return
+     * @return notification
      */
     public static ObservableList<Notificaton> getNotificatons() {
-        return notificatons;
+        return notifications;
     }
 
     /**
@@ -50,19 +53,16 @@ public abstract class Controller {
      */
     public static void addDevice(String name, String alias) {
         switch (alias) {
-            case "ENTRYSENSOR", "MOTIONSENSOR", "GLASSBREAKSENSOR", "SMOKEDETECTOR", "COSENSOR",
-                    "TEMPERATURESENSOR", "WATERSENSOR":
-                sensors.add(new Sensor(name, alias));
-                break;
-            default:
-                alarms.add(new Alarm(name, alias));
+            case "ENTRYSENSOR", "MOTIONSENSOR", "GLASSBREAKSENSOR", "SMOKEDETECTOR", "COSENSOR", "TEMPERATURESENSOR",
+                    "WATERSENSOR" -> sensors.add(new Sensor(name, alias));
+            default -> alarms.add(new Alarm(name, alias));
         }
     }
 
     /**
      * This takes a name of string and triggers the relevant device
      * by iterating through all the current devices
-     * @param name
+     * @param name the name of the triggered device
      */
     public static void triggerDevice(String name) {
         for (Device d:
@@ -78,7 +78,7 @@ public abstract class Controller {
 
     /**
      * This triggers all the currently active Alarms in the system
-     * @param initiatingDevice
+     * @param initiatingDevice the device that set off the alarms
      */
     public static void triggerAlarms(Device initiatingDevice) {
         for (Device d:
@@ -94,8 +94,8 @@ public abstract class Controller {
     /**
      * This method takes a String and makes sure
      * that it is not duplicated within the system
-     * @param theName
-     * @return
+     * @param theName the name of the device
+     * @return boolean of whether the name is already a device
      */
     public static boolean isDuplicateName(String theName) {
         for (Alarm alarm: alarms) {

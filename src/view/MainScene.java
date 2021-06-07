@@ -23,7 +23,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 /**
- * WIP just a few custom buttons
+ * Class representing the MainScene GUI
  */
 public class MainScene implements EventHandler<ActionEvent> {
 
@@ -40,6 +40,9 @@ public class MainScene implements EventHandler<ActionEvent> {
 
     BorderPane pane = new BorderPane();
 
+    /**
+     * constructs the MainScene GUI
+     */
     public MainScene() {
 
         //A few custom ToggleButtons in an HBOX
@@ -83,15 +86,7 @@ public class MainScene implements EventHandler<ActionEvent> {
             offState();
         }
         DeviceScene.update();
-        //System.out.println(Controller.getSensors().size());
-        //System.out.println(Controller.getAlarms().size());
-        //for (Sensor sensor: Controller.getSensors()) {
-        //    System.out.println(sensor);
-        //}
-        //System.out.println("new");
-        //for (Alarm alarm: Controller.getAlarms()) {
-        //    System.out.println(alarm);
-        //}
+
     }
 
     /**
