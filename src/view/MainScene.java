@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -15,6 +16,7 @@ import model.Component;
 import model.Device;
 import model.Sensor;
 
+import javax.swing.*;
 import java.awt.event.ActionListener;
 
 /**
@@ -25,6 +27,7 @@ public class MainScene implements EventHandler<ActionEvent> {
     private ToggleButton homeButton;
     private ToggleButton awayButton;
     private ToggleButton offButton;
+    private TextArea alarmState;
 
 
 
@@ -46,6 +49,12 @@ public class MainScene implements EventHandler<ActionEvent> {
         offButton = new ToggleButton("Off");
         offButton.setToggleGroup(butonGroup);
         HBox buttons = new HBox(homeButton, awayButton, offButton);
+
+        // Text area to display the state of the arm
+
+        alarmState = new TextArea();
+        this.pane.setTop(alarmState);
+
 
         buttons.setSpacing(10);
         buttons.setAlignment(Pos.CENTER);
@@ -93,6 +102,11 @@ public class MainScene implements EventHandler<ActionEvent> {
             alarm.setStatus(Device.DEVICE_STATUS.ACTIVATED);
         }
 
+        if(homeButton.isSelected()) {
+            alarmState.setText("Home");
+
+        }
+
     }
 
     /**
@@ -105,6 +119,9 @@ public class MainScene implements EventHandler<ActionEvent> {
         for (Alarm alarm: Controller.getAlarms()) {
             alarm.setStatus(Device.DEVICE_STATUS.ACTIVATED);
         }
+        if(awayButton.isSelected()) {
+            alarmState.setText("Away");
+        }
     }
 
     /**
@@ -116,6 +133,11 @@ public class MainScene implements EventHandler<ActionEvent> {
         }
         for (Alarm alarm: Controller.getAlarms()) {
             alarm.setStatus(Device.DEVICE_STATUS.DEACTIVATED);
+        }
+        if(offButton.isSelected()) {
+            alarmState.setText("Off");
+
+
         }
     }
 }
