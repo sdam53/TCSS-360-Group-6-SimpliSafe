@@ -38,6 +38,10 @@ public abstract class Device {
     /** string for device hash/ID */
     protected int myID;
 
+    /**
+     * constructs the device object
+     * @param name the name of the device
+     */
     public Device(String name) {
         this.myStatus = DEVICE_STATUS.NULL;
         this.myName = name;
@@ -94,6 +98,10 @@ public abstract class Device {
         return Integer.toString(myID);
     }
 
+    /**
+     * get device type
+     * @return enum of device type
+     */
     public Component getMyType() {
         return myType;
     }
