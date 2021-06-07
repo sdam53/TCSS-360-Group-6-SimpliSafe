@@ -7,14 +7,14 @@ package model;
  * very useful
  */
 public enum Component {
-    COSENSOR("COSENSOR", "sensor"),
-    WATERSENSOR("WATERSENSOR", "sensor"),
-    TEMPERATURESENSOR("TEMPERATURESENSOR", "sensor"),
+    ENTRYSENSOR("ENTRYSENSOR", "sensor"),
     MOTIONSENSOR("MOTIONSENSOR", "sensor"),
     GLASSBREAKSENSOR("GLASSBREAKSENSOR", "sensor"),
-    ENTRYSENSOR("ENTRYSENSOR", "sensor"),
-    SMOKEALARM("SMOKEALARM", "alarm"),
-    ENTRYALARM("ENTRYALARM", "alarm"),
+    SMOKEDETECTOR("SMOKEDETECTOR", "sensor"),
+    COSENSOR("COSENSOR", "sensor"),
+    TEMPERATURESENSOR("TEMPERATURESENSOR", "sensor"),
+    WATERSENSOR("WATERSENSOR", "sensor"),
+    SIREN("SIREN", "alarm"),
     NONCOMPONENT("...", "N/A");
 
     private String alias;
