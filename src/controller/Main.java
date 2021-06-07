@@ -1,21 +1,14 @@
 package controller;
 
-import javafx.application.Platform;
-import model.Notificaton;
 import view.DeviceScene;
 import view.EmulatorScene;
 import view.HistoryScene;
 import view.MainScene;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Main class that handles the main function
@@ -30,7 +23,7 @@ public class Main extends Application {
 
     /**
      * sets the primary stage to the TabPane
-     * @param primaryStage
+     * @param primaryStage the stage
      * @throws Exception
      */
     @Override
@@ -44,7 +37,7 @@ public class Main extends Application {
 
     /**
      * init function for the main TabPane which is here to reduce clutter in main
-     * @return
+     * @return tabpane
      */
     public TabPane initTabPane() {
         TabPane mainPane = new TabPane();
