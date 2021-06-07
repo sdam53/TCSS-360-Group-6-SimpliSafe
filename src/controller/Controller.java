@@ -19,10 +19,18 @@ public abstract class Controller {
     //this is an ObservableList for compatability reasons
     private static ObservableList<Notificaton> notificatons = FXCollections.observableArrayList();
 
+    /**
+     * Getter for the alarm arraylist
+     * @return
+     */
     public static ArrayList<Alarm> getAlarms() {
         return alarms;
     }
 
+    /**
+     * getter for the sensor arraylist
+     * @return
+     */
     public static ArrayList<Sensor> getSensors() {
         return sensors;
     }
@@ -51,6 +59,11 @@ public abstract class Controller {
         }
     }
 
+    /**
+     * This takes a name of string and triggers the relevant device
+     * by iterating through all the current devices
+     * @param name
+     */
     public static void triggerDevice(String name) {
         for (Device d:
                 getSensors()) {
@@ -63,6 +76,10 @@ public abstract class Controller {
         System.out.println("Found no matching devices");
     }
 
+    /**
+     * This triggers all the currently active Alarms in the system
+     * @param initiatingDevice
+     */
     public static void triggerAlarms(Device initiatingDevice) {
         for (Device d:
              getAlarms()) {
@@ -74,6 +91,12 @@ public abstract class Controller {
         DeviceScene.update();
     }
 
+    /**
+     * This method takes a String and makes sure
+     * that it is not duplicated within the system
+     * @param theName
+     * @return
+     */
     public static boolean isDuplicateName(String theName) {
         for (Alarm alarm: alarms) {
             if (theName.equals(alarm.getMyName())) {

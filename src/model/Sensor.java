@@ -17,6 +17,10 @@ public class Sensor extends Device{
         super(theName, alias);
     }
 
+    /**
+     * Triggers the Sensor and simulates the relevant behavior
+     * @param myName
+     */
     @Override
     public void trigger(String myName) {
         Controller.getNotificatons().add(new Notificaton(this.myName, this.getMyType().toString()));

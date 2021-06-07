@@ -17,6 +17,10 @@ public class Alarm extends Device{
         super(theName, alias);
     }
 
+    /**
+     * Method for triggering the alarm and simulating that behavior
+     * @param triggeringDevice
+     */
     @Override
     public void trigger(String triggeringDevice) {
         Controller.getNotificatons().add(new Notificaton(this.myName + " TRIGGERED FROM: " + triggeringDevice, this.getMyType().toString()));

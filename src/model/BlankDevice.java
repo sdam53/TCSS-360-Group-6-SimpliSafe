@@ -9,6 +9,7 @@ public class BlankDevice extends Device{
         super(theName, alias);
     }
 
+
     @Override
     public DEVICE_STATUS getMyStatus() {
         return DEVICE_STATUS.NULL;
