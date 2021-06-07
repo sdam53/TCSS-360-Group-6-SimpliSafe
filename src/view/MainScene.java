@@ -3,24 +3,18 @@ package view;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import model.Alarm;
 import model.Component;
 import model.Device;
 import model.Sensor;
-
-import javax.swing.*;
-import java.awt.event.ActionListener;
 
 /**
  * Class representing the MainScene GUI
@@ -49,14 +43,14 @@ public class MainScene implements EventHandler<ActionEvent> {
     public MainScene() {
 
         //A few custom ToggleButtons in an HBOX
-        ToggleGroup butonGroup = new ToggleGroup();
-        ViewUtil.get().addAlwaysOneSelectedSupport(butonGroup);
+        ToggleGroup buttonGroup = new ToggleGroup();
+        ViewUtil.get().addAlwaysOneSelectedSupport(buttonGroup);
         homeButton = new ToggleButton("Home");
-        homeButton.setToggleGroup(butonGroup);
+        homeButton.setToggleGroup(buttonGroup);
         awayButton = new ToggleButton("Away");
-        awayButton.setToggleGroup(butonGroup);
+        awayButton.setToggleGroup(buttonGroup);
         offButton = new ToggleButton("Off");
-        offButton.setToggleGroup(butonGroup);
+        offButton.setToggleGroup(buttonGroup);
         HBox buttons = new HBox(homeButton, awayButton, offButton);
 
         // Text area to display the state of the arm
