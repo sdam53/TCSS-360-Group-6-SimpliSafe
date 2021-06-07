@@ -35,7 +35,7 @@ public class BlankDevice extends Device{
     }
 
     @Override
-    public void trigger() {
+    public void trigger(String myName) {
 
     }
 }

@@ -18,8 +18,9 @@ public class Alarm extends Device{
     }
 
     @Override
-    public void trigger() {
-        Controller.getNotificatons().add(new Notificaton(this.myName, this.getMyType().toString()));
+    public void trigger(String triggeringDevice) {
+        Controller.getNotificatons().add(new Notificaton(this.myName + " TRIGGERED FROM: " + triggeringDevice, this.getMyType().toString()));
+        this.setStatus(DEVICE_STATUS.ALARMED);
     }
 
     public Alarm(String name) {

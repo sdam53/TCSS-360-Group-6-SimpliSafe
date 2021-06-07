@@ -3,6 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.*;
+import view.DeviceScene;
 
 import java.util.ArrayList;
 
@@ -51,20 +52,25 @@ public abstract class Controller {
 
     public static void triggerDevice(String name) {
         for (Device d:
-             getAlarms()) {
-            if(d.getMyName().equalsIgnoreCase(name)) {
-                d.trigger();
-                return;
-            }
-        }
-        for (Device d:
                 getSensors()) {
             if(d.getMyName().equalsIgnoreCase(name)) {
-                d.trigger();
+                d.trigger(d.getMyName());
+                triggerAlarms(d);
                 return;
             }
         }
         System.out.println("Found no matching devices");
 
+    }
+
+    public static void triggerAlarms(Device initiatingDevice) {
+        for (Device d:
+             getAlarms()) {
+            if (d.getMyStatus().equals(Device.DEVICE_STATUS.ACTIVATED)) {
+                d.trigger(initiatingDevice.getMyName());
+            }
+        }
+
+        DeviceScene.update();
     }
 }

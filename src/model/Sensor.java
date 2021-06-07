@@ -18,8 +18,9 @@ public class Sensor extends Device{
     }
 
     @Override
-    public void trigger() {
+    public void trigger(String myName) {
         Controller.getNotificatons().add(new Notificaton(this.myName, this.getMyType().toString()));
+        this.setStatus(DEVICE_STATUS.ALARMED);
     }
 
     public Sensor(String name) {

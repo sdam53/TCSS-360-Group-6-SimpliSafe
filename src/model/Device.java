@@ -130,7 +130,7 @@ public abstract class Device {
         this.myID = theHash;
     }
 
-    public abstract void trigger();
+    public abstract void trigger(String myName);
 
     @Override
     public String toString() {
